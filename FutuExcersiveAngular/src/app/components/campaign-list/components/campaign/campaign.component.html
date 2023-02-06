@@ -1,0 +1,31 @@
+<div class="question-container">
+    <span class="column">
+        {{campaign.id}}
+    </span>
+  <span class="column" style="width: 5vw">
+        {{campaign.name}}
+    </span>
+  <span class="column" style="width: 5vw">
+        {{campaign.keywords}}
+    </span>
+  <span class="column" style="width: 5vw">
+        {{campaign.bid_amount}}
+    </span>
+  <span class="column" style="width: 5vw">
+        {{campaign.campaign_fund}}
+    </span>
+  <span class="column" style="width: 5vw">
+        {{campaign.status}}
+    </span>
+  <span class="column" style="width: 5vw">
+        {{campaign.town}}
+    </span>
+  <span class="column" style="width: 5vw">
+        {{campaign.radius}}
+    </span>
+  <span class="column">
+        <button mat-stroked-button color="warn" class="delete-button" (click)="openCampaignDeleteDialog()">Usuń</button>
+        <button mat-stroked-button class="edit-button" (click)="openCampaignEditDialog()">Edytuj</button>
+    </span>
+</div>
+

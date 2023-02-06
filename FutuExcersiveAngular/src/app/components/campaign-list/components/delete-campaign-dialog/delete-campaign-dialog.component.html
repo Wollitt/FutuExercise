@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Usuwanie kampanii</h1>
+<div mat-dialog-content>
+  Czy jesteś pewny, że chcesz usunąć tę kampanię?
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Anuluj</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="dialogData" color="warn">Usuń</button>
+</div>

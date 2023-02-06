@@ -1,0 +1,34 @@
+
+<div>
+  <div class="header">
+    <span>
+      Campaign List
+    </span>
+    <span>
+      <button mat-raised-button color="accent" (click)="openCampaignAddDialog()">Dodaj kampanie</button>
+    </span>
+  </div>
+
+  <div class="questions-container">
+    <div class="question-container">
+      <span class="column">
+          Campaign
+      </span>
+      <span class="column">
+        Edit Options
+      </span>
+    </div>
+    <div class="questions">
+      <ng-container *ngFor="let campaign of campaigns">
+        <app-campaign [campaign]="campaign" (deleteCampaignEventEmitter)="deleteCampaign($event)" (editCampaignEventEmitter)="editCampaign($event)"></app-campaign>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </div>
+
+  </div>
+
+  <div class="balance">
+    <h1>Account balance: {{balance}}</h1>
+  </div>
+
+</div>

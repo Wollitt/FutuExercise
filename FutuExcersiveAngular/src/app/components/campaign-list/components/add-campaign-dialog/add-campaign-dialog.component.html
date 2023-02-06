@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Dodawanie pytania</h1>
+<div mat-dialog-content>
+  <form [formGroup]="addCampaignForm">
+    <p>Campaign name:</p>
+    <mat-form-field appearance="fill" class="ticket-input">
+      <mat-label>New campaign name</mat-label>
+      <input matInput [(ngModel)]="dialogData.name" formControlName="name">
+      <mat-error>
+        The field cannot be empty
+      </mat-error>
+    </mat-form-field>
+
+    <p>Keywords:</p>
+    <mat-form-field appearance="fill" class="ticket-input">
+      <mat-label>New keywords</mat-label>
+      <input matInput [(ngModel)]="dialogData.keywords"
+             formControlName="keywords"
+             [formControl]="control"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let keyword of filtered_auto_keywords | async" [value]="keyword">
+          {{keyword}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error>
+        The field cannot be empty
+      </mat-error>
+    </mat-form-field>
+
+    <p>Bid amount:</p>
+    <mat-form-field appearance="fill" class="ticket-input">
+      <mat-label>New bid amount</mat-label>
+      <input matInput [(ngModel)]="dialogData.bid_amount" formControlName="bid_amount">
+      <mat-error>
+        The field cannot be empty and can't be less than 0
+      </mat-error>
+    </mat-form-field>
+
+    <p>Campaign fund:</p>
+    <mat-form-field appearance="fill" class="ticket-input">
+      <mat-label>New campaign fund</mat-label>
+      <input matInput [(ngModel)]="dialogData.campaign_fund" formControlName="campaign_fund">
+      <mat-error>
+        The field cannot be empty and can't be less than 0
+      </mat-error>
+    </mat-form-field>
+
+    <p>Radius:</p>
+    <mat-form-field appearance="fill" class="ticket-input">
+      <mat-label>New radius</mat-label>
+      <input matInput [(ngModel)]="dialogData.radius" formControlName="radius">
+      <mat-error>
+        The field cannot be empty and can't be less than 0
+      </mat-error>
+    </mat-form-field>
+
+    <p>Towns:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>New town</mat-label>
+      <mat-select [(ngModel)]="dialogData.town" name="name" formControlName="town">
+        <mat-option *ngFor="let town of towns" [value]="town">
+          {{town}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p>Is active:</p>
+    <mat-checkbox [checked]="dialogData.status" (change)="onChange($event)">
+      Is campaign currently active?
+    </mat-checkbox>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Anuluj</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="dialogData" [disabled]="addCampaignForm.invalid">Dodaj</button>
+</div>
